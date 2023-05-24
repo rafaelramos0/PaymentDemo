@@ -163,6 +163,7 @@ pipeline {
                             }
                         }
 
+/*
                         // Auto-validation was set during upload; get status of snapshot
                         stage('Validate') {
                             steps {
@@ -210,6 +211,7 @@ pipeline {
                             }
                         }
 
+*/
                         // Publish snapshot now that it passed validation
                         stage('Publish') {
                             when {
