@@ -1,5 +1,6 @@
 replicaCount: "2"
 
+
 mongo:
   dbport : "27017"
   dbUrl: "https://awesome.uswest1.prd-studio.mongodb"
