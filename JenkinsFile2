@@ -14,7 +14,7 @@ pipeline {
    environment {
 	 SCANNER_HOME = tool 'sonarScanner'
 	buildArtifactsPath = "build_artifacts/${currentBuild.number}"
-        validationResultsPath = "
+        validationResultsPath = ""
 	}  
   stages {
   
