@@ -351,7 +351,7 @@ pipeline {
        stage('Build &1') {
            steps {
               
-              sh 'mvn -B -DskipTests clean compile'
+             //sh 'mvn -B -DskipTests clean compile'
 			sh 'mvn test'
            }
            post {
@@ -363,7 +363,7 @@ pipeline {
        stage('Test &2') {
            steps {
               
-             // sh 'mvn test'
+              sh 'mvn test'
            }
            post {
              always {
