@@ -8,9 +8,9 @@ def pkgName = "rome-rp1-package"
 
 pipeline {
   agent any
- /* tools {
+ tools {
        maven 'Maven'
-   } */
+   } 
    environment {
 	 // SCANNER_HOME = tool 'sonarScanner'
 	buildArtifactsPath = "build_artifacts/${currentBuild.number}"
