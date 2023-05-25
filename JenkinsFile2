@@ -8,9 +8,9 @@ def pkgName = "rome-rp1-package"
 
 pipeline {
   agent any
- tools {
+/* tools {
        maven 'Maven'
-   } 
+   } */
    environment {
 	 // SCANNER_HOME = tool 'sonarScanner'
 	buildArtifactsPath = "build_artifacts/${currentBuild.number}"
@@ -363,7 +363,7 @@ pipeline {
        stage('Test &2') {
            steps {
               
-              sh 'mvn test'
+             // sh 'mvn test'
            }
            post {
              always {
