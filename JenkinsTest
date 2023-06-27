@@ -129,7 +129,7 @@ steps {
                 junit "**/target/surefire-reports/*.xml"
              }
            }
-       }
+       
  steps {
               
               sh 'mvn test'
@@ -140,6 +140,7 @@ steps {
              }
            }
 } 
+
             
         // Validate code and config data
         stage('Validate') {
@@ -191,6 +192,10 @@ steps {
                     
                  }
                         }
+}
+}
+}
+}
 
 
                         // Auto-validation was set during upload; get status of snapshot
@@ -295,15 +300,15 @@ steps {
                                 echo "Running code quality analysis..."
                             }
                         }
-                    }    
-                }
+                 
                 steps {
                     
                     echo 'sonar summaries....'
                     sonarSummaries()                    
                  }
-            }
+            
         }
+}
 
         // Deploy configuration data to UAT environment
         stage('UAT Deployment') {
@@ -393,8 +398,6 @@ steps {
                  }     
 }
     
-
- }
  
 
 
