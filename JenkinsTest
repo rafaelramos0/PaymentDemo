@@ -284,20 +284,11 @@ pipeline {
                         stage('jUnit Test'){ 
                             steps {
                                 echo "Running unit tests..."
+                       sonarSummaries()   
                             }
                         }
                         
-                        stage('SonarQube analysis') {
-                            steps {
-                                echo "Running code quality analysis..."
-                            }
-                        }
-                 
-                steps {
-                    
-                    echo 'sonar summaries....'
-                    sonarSummaries()                    
-                 }
+                
             
         }
 }
