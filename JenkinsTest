@@ -12,10 +12,10 @@ pipeline {
        maven 'Maven'
    } 
    environment {
-	 SCANNER_HOME = tool 'SonarQube'
-	buildArtifactsPath = "build_artifacts/${currentBuild.number}"
+     SCANNER_HOME = tool 'SonarQube'
+    buildArtifactsPath = "build_artifacts/${currentBuild.number}"
         validationResultsPath = ""
-	}  
+    }  
   stages {
   
     // Initialize pipeline
@@ -110,7 +110,7 @@ pipeline {
                 echo "scm checkout successful"
   
 //sh 'mvn -B -DskipTests clean compile'
-			sh 'mvn test'
+            sh 'mvn test'
 
                 
                 script {
@@ -171,17 +171,17 @@ pipeline {
                                         error "Changeset was not created"
                                     }
                                 }
+                                                    echo 'Deploying the change....'
+                    snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
+                    snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
+ 
+                    //snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}-PATCH","semanticVersion": "1.${env.BUILD_NUMBER}.0-PATCH","repositoryName": "${repoName}"}],"branchName":"master"}""")
+                    //snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}-PATCH", "repositoryName": "${repoName}"}], "branchName":"master"}""")
                             }
 
         
                     
-                    echo 'Deploying the change....'
-                    snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
-          			snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
- 
-                    //snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}-PATCH","semanticVersion": "1.${env.BUILD_NUMBER}.0-PATCH","repositoryName": "${repoName}"}],"branchName":"master"}""")
-           			//snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}-PATCH", "repositoryName": "${repoName}"}], "branchName":"master"}""")
-                    
+
                 
                         }
 }
@@ -382,10 +382,10 @@ pipeline {
                     
                     echo 'Deploying the change....'
                     //snDevOpsChange(ignoreErrors:false)
-		                snDevOpsChange changeCreationTimeOut: 3600, changeRequestDetails: '{ "attributes": { "short_description": "Test description", "priority": "1", "start_date": "2021-02-05 08:00:00", "end_date": "2022-04-05 08:00:00", "justification": "test justification", "description": "test description", "cab_required": true, "comments": "This update for work notes is from jenkins file", "work_notes": "test work notes", "assignment_group": "a715cd759f2002002920bde8132e7018" }, "setCloseCode": false }', changeStepTimeOut: 18000, pollingInterval: 30
+                        snDevOpsChange changeCreationTimeOut: 3600, changeRequestDetails: '{ "attributes": { "short_description": "Test description", "priority": "1", "start_date": "2021-02-05 08:00:00", "end_date": "2022-04-05 08:00:00", "justification": "test justification", "description": "test description", "cab_required": true, "comments": "This update for work notes is from jenkins file", "work_notes": "test work notes", "assignment_group": "a715cd759f2002002920bde8132e7018" }, "setCloseCode": false }', changeStepTimeOut: 18000, pollingInterval: 30
  
                     //snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
-           			//snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
+                    //snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
                     
                  }     
 }
@@ -398,10 +398,10 @@ def sonarSummaries() {
    withSonarQubeEnv('Sonar_Cloud') {
        sh '${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=paymentdemo -Dsonar.organization=harsh-pmb -Dsonar.branch.name=main -Dsonar.language=java -Dsonar.java.binaries=target//classes/'
    }
-	
+    
     //withSonarQubeEnv('sonarQube_local') {
-       	//sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties'
-   		// sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/sonar-scanner.properties'
-	//}
-	
+        //sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties'
+        // sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/sonar-scanner.properties'
+    //}
+    
 } // end of def sonarsummaries
