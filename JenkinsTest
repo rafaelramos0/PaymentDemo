@@ -291,7 +291,7 @@ pipeline {
                         
                 
             
-        }
+      //  }
 
         // Deploy configuration data to UAT environment
         stage('UAT Deployment') {
