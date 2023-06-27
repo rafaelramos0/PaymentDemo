@@ -272,6 +272,7 @@ pipeline {
                                             exporterArgs: "${exporterArgs}"
                                     )
                                     echo "RESPONSE FROM EXPORT : ${exportResponse}"
+                     sonarSummaries()   
                                 }
                             }
                         }
@@ -279,13 +280,13 @@ pipeline {
                 }
 
                 // Validate application code changes (SIMULATED)
-                stage('Code') { 
+              //  stage('Code') { 
                 
                 //        stage('jUnit Test'){ 
-                            steps {
-                                echo "Running unit tests..."
-                       sonarSummaries()   
-                            }
+                         //   steps {
+                        //        echo "Running unit tests..."
+                      
+                        //    }
                       //  }
                         
                 
