@@ -388,7 +388,7 @@ def sonarSummaries() {
 
    withSonarQubeEnv('Sonar_Cloud') {
       // sh '${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=paymentdemo -Dsonar.organization=harsh-pmb -Dsonar.branch.name=main -Dsonar.language=java -Dsonar.java.binaries=target//classes/'
-sh '${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=pramaraju96_DevOps-Test -Dsonar.organization=pramaraju96 -Dsonar.branch.name=main -Dsonar.language=java -Dsonar.java.binaries=target//classes/'
+sh '${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=ramarajupolanki_DevOps-Test -Dsonar.organization=ramarajupolanki-ado -Dsonar.branch.name=main -Dsonar.language=java -Dsonar.java.binaries=target//classes/'
    }
     
     //withSonarQubeEnv('sonarQube_local') {
