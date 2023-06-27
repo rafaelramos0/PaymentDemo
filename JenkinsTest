@@ -281,12 +281,12 @@ pipeline {
                 // Validate application code changes (SIMULATED)
                 stage('Code') { 
                 
-                        stage('jUnit Test'){ 
+                //        stage('jUnit Test'){ 
                             steps {
                                 echo "Running unit tests..."
                        sonarSummaries()   
                             }
-                        }
+                      //  }
                         
                 
             
