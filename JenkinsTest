@@ -280,7 +280,7 @@ pipeline {
 
                 // Validate application code changes (SIMULATED)
                 stage('Code') { 
-                    stages {
+                
                         stage('jUnit Test'){ 
                             steps {
                                 echo "Running unit tests..."
@@ -291,7 +291,6 @@ pipeline {
                 
             
         }
-}
 
         // Deploy configuration data to UAT environment
         stage('UAT Deployment') {
