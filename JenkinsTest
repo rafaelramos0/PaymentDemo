@@ -108,6 +108,10 @@ pipeline {
             steps {
                 checkout scm    
                 echo "scm checkout successful"
+  
+//sh 'mvn -B -DskipTests clean compile'
+			sh 'mvn test'
+
                 
                 script {
                     dockerImageTag = env.BUILD_NUMBER
@@ -120,10 +124,7 @@ pipeline {
                     snDevOpsArtifact(artifactsPayload:snDevopsArtifactPayload)
                 }
             }
-steps {
-             //sh 'mvn -B -DskipTests clean compile'
-			sh 'mvn test'
-           }
+
            post {
              always {
                 junit "**/target/surefire-reports/*.xml"
@@ -171,6 +172,7 @@ steps {
                                     }
                                 }
                             }
+
                       steps {
                     
                     echo 'Deploying the change....'
