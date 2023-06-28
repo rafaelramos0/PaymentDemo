@@ -133,7 +133,7 @@ pipeline {
 } 
             
         // Validate code and config data
-        stage('Validate1') {
+        stage('Validate_code_config_data') {
             parallel {
                 // Validate configuration data changes
                 stage('Config') {
@@ -184,7 +184,7 @@ pipeline {
 }
 }
                         // Auto-validation was set during upload; get status of snapshot
-                        stage('Validate2') {
+                        stage('Validate_snapshot') {
                             steps {
                                 echo "Triggering snDevOpsConfigGetSnapshots for applicationName:${appName},deployableName:${deployableName},changeSetId:${changeSetId}"
 
@@ -282,15 +282,7 @@ pipeline {
                 
             
       //  }
-
-        // Deploy configuration data to UAT environment
-        stage('UAT Deployment') {
-            steps {
-                sleep(time:5,unit:"SECONDS")
-            }
-        }
-        
-        // Run functional tests
+// Run functional tests
         stage ('Functional Testing') {
             parallel {      
                 stage('Selenium API') { 
@@ -309,6 +301,15 @@ pipeline {
                 }
             }
         }
+
+        // Deploy configuration data to UAT environment
+        stage('UAT Deployment') {
+            steps {
+                sleep(time:5,unit:"SECONDS")
+            }
+        }
+        
+        
         
         // Submit change management review
         stage('Change Management') {
