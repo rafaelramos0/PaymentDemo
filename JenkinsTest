@@ -291,7 +291,7 @@ pipeline {
         }
         
         // Run functional tests
-        stages ('Functional Testing') {
+        stage ('Functional Testing') {
             parallel {      
                 stage('Selenium API') { 
                     steps {
@@ -370,9 +370,8 @@ pipeline {
                     
                  }     
 }
-  
-                    }
-                }
+ }
+ }
 
                
 
