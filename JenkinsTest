@@ -276,10 +276,7 @@ pipeline {
                                 }
                             }
                         }
-                    }
-                }
-
-                // Validate application code changes (SIMULATED)
+ // Validate application code changes (SIMULATED)
               //  stage('Code') { 
                 
                 //        stage('jUnit Test'){ 
@@ -380,9 +377,11 @@ pipeline {
                     
                  }     
 }
-    
- 
+  
+                    }
+                }
 
+               
 
 def sonarSummaries() {
 
