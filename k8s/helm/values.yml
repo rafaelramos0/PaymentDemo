@@ -16,7 +16,7 @@ image:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
+email: "prathyusha@sndevops.xyz"
 imageBuildNumber:
   buildIdRef: grefId123
 
