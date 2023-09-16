@@ -16,7 +16,7 @@ image:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-email: "paymentdemo@sndevops.com.br"
+email: "paymentdemo@sndevops.com.br
 imageBuildNumber:
   buildIdRef: grefId123
 
